@@ -4,7 +4,7 @@ format:
     #theme: ["theme/q-theme.scss"]
     slide-number: c/t
     logo: "https://www.insp.mx/assets/images/insp.png"
-    footer: "[github.com/fdzul](https://sensational-meerkat-e2d1c0.netlify.app/talks/sdm_avance/#/)"
+    footer: "[https://musical-fox-22668c.netlify.app/talks/dengue_stratification/#/)"
     code-copy: true
     center-title-slide: false
 highlight-style: a11y
@@ -85,5 +85,18 @@ DiagrammeR::grViz("digraph {
  inf -> {ento, epi, clim, socio, land, mov} -> ana -> indice -> hotspots
  
  
-}")
+}", heigh = "500px", width = "800px")
 ```
+
+
+## [Dios Botic]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+-   ***Bio*** : [https://fdzul.github.io/web_site_fadm/]()
+
+-   ***email*** : [felipe.dzul.m\@gmail.com]()
+
+-   ***celular*** : [9999580167]()
+
+-   ***slide***: [link](https://musical-fox-22668c.netlify.app/talks/dengue_stratification/#/)
+
