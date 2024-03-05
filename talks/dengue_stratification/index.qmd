@@ -44,11 +44,25 @@ execute:
 ![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/def_mia.png?raw=true)
 
 
-## [Antecedentes: Mérida]{style="color:#003300;"}
+## [Hotspots Mérida ([Bisanzio et al 2018](https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0006298))]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
+:::: {.columns}
 
-## [Manejo Integrado de Aedes]{style="color:#003300"}
+::: {.column style="width: 50%;font-size: 70%"}
+![](https://journals.plos.org/plosntds/article/file?id=10.1371/journal.pntd.0006298.g001&type=large){.absolute width="700"}
+:::
+
+::: {.column style="width: 50%"}
+![](https://journals.plos.org/plosntds/article/file?id=10.1371/journal.pntd.0006298.g002&type=large)
+
+![](https://journals.plos.org/plosntds/article/file?id=10.1371/journal.pntd.0006298.g003&type=large)
+:::
+
+::::
+
+
+## [Manejo Integrado de Aedes ([Roiz et al 2018](https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0006845))]{style="color:#003300"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 ![](https://journals.plos.org/plosntds/article/figure/image?size=large&id=10.1371/journal.pntd.0006845.g001){.absolute right="100" width="1400"}
@@ -66,8 +80,50 @@ execute:
 ![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/mia_paho.png?raw=tru)
 
 
-## [Antecedentes: 9 localidades urbanas]{style="color:#003300;"}
+## [Hotspots en el Sur de México ([Dzul-Manzanilla et al 2021](https://www.sciencedirect.com/science/article/pii/S2542519621000309#fig1))]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+[Área de Estudio]{.center style="color:#00ADB5;"}
+&nbsp;
+
+![](https://www.thelancet.com/cms/attachment/8edac20e-c3a5-4254-aee1-5287923744c9/gr1.jpg){.absolute right="800" width="750"}
+:::
+
+::: {.column style="width: 50%"}
+[Intensidad de la Transmisión de Dengue]{.center style="color:#00ADB5;"}
+&nbsp;
+
+![](https://www.thelancet.com/cms/attachment/8eea4c87-1ad1-40c5-8c9c-96367cdc47b5/gr2.jpg){.absolute right="0"}
+:::
+
+::::
+
+## [Coherencia Espacial Entre las Arbobvirosis en México ([Dzul-Manzanilla et al 2021](https://www.sciencedirect.com/science/article/pii/S2542519621000309#fig1))]{style="color:#003300;" .r-fit-text}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+[Coherencia espacial entre DENV & CHIKV]{.r-fit-text .center style="color:#00ADB5;"}
+&nbsp;
+
+![](https://ars.els-cdn.com/content/image/1-s2.0-S2542519621000309-gr3.jpg){.absolute right="850" width="750"}
+
+:::
+
+::: {.column style="width: 50%"}
+[Coherencia espacial entre DENV & ZIKV]{.r-fit-text .center style="color:#00ADB5;"}
+&nbsp;
+
+![](https://ars.els-cdn.com/content/image/1-s2.0-S2542519621000309-gr4.jpg){.absolute right="0" width="750"}
+:::
+
+::::
+
+
 
 ## [Hipótesis & Objetivo General]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
@@ -114,7 +170,7 @@ Realizar el Análisis Espacial de las Arbovirosis en México.
 ## [Flujograma de la Estratificación de Localidades]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
-![](flowchar_analysis.png)
+![](flowchar_analysis.png){.absolute right="0" width="3050"}
 
 
 
