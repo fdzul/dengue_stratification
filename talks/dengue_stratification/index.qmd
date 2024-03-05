@@ -38,8 +38,33 @@ execute:
 
 
 
+## [Manejo Integrado de los Vectores]{style="color:#003300"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/def_mia.png?raw=true)
+
+
 ## [Antecedentes: Mérida]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+## [Manejo Integrado de Aedes]{style="color:#003300"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+![](https://journals.plos.org/plosntds/article/figure/image?size=large&id=10.1371/journal.pntd.0006845.g001){.absolute right="100" width="1400"}
+
+
+## [MIA y Escenarios Operativos en Asia]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/IRS_WPR2.png?raw=true)
+
+
+## [MIA y Escenarios Operativos en América]{.r-fit-text .center style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/mia_paho.png?raw=tru)
+
 
 ## [Antecedentes: 9 localidades urbanas]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
