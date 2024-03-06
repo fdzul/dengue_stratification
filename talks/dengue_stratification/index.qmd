@@ -712,7 +712,7 @@ Mérida
 :::
 
 ::: grid-item
-```{r hotspots_cases_merida, out.height="110%", out.width="110%"}
+```{r hotspots_cases_merida, out.height="110%", out.width="110%", echo=FALSE}
 # Step 1. extract the locality ####
 loc <- rgeomex::extract_locality(cve_edo = "31", 
                                  locality = "Merida")
@@ -735,7 +735,7 @@ hotspots |>
 :::
 
 ::: grid-item
-```{r hotspots_vector_merida, out.height="110%", out.width="110%"}
+```{r hotspots_vector_merida, out.height="110%", out.width="110%", echo=FALSE}
 source("/Users/fdzul/Dropbox/r_developments/r_talks/2023/reunion_interstatal_2023/reunion_quintana_roo/functions/intensity_eggs.R")
 
 denmex::eggs_betas_31_yucatan |>
@@ -751,7 +751,7 @@ denmex::eggs_betas_31_yucatan |>
 :::
 
 ::: grid-item
-```{r risk_merida, out.height="110%", out.width="110%"}
+```{r risk_merida, out.height="110%", out.width="110%", echo=FALSE}
 # Step 1. calculate the risk ####
 risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_31_yucatan,
                                hotspots = denmex::den_hotspots,
@@ -770,7 +770,7 @@ Guadalajara
 :::
 
 ::: grid-item
-```{r hotspots_cases_guadalajara, out.height="110%", out.width="110%"}
+```{r hotspots_cases_guadalajara, out.height="110%", out.width="110%", echo=FALSE}
 # Step 1. extract the locality ####
 loc <- rgeomex::extract_locality(cve_edo = "14", 
                                  locality = c("Guadalajara",
@@ -796,7 +796,7 @@ hotspots |>
 :::
 
 ::: grid-item
-```{r hotspots_vector_guadalajara, out.height="110%", out.width="110%"}
+```{r hotspots_vector_guadalajara, out.height="110%", out.width="110%", echo=FALSE}
 source("/Users/fdzul/Dropbox/r_developments/r_talks/2023/reunion_interstatal_2023/reunion_quintana_roo/functions/intensity_eggs.R")
 
 denmex::eggs_betas_14_jalisco |>
@@ -815,7 +815,7 @@ denmex::eggs_betas_14_jalisco |>
 :::
 
 ::: grid-item
-```{r risk_guadalajara, out.height="110%", out.width="110%"}
+```{r risk_guadalajara, out.height="110%", out.width="110%", echo=FALSE}
 # Step 1. calculate the risk ####
 risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_14_jalisco,
                                hotspots = denmex::den_hotspots,
@@ -842,7 +842,7 @@ denhotspots::map_risk(risk = risk,
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 
-```{r dengue_risk_map}
+```{r dengue_risk_map, echo=FALSE}
 # Step 1. load the AGEE ####
 mex <- rgeomex::AGEE_inegi19_mx
 
