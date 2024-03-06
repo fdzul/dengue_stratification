@@ -842,7 +842,11 @@ denhotspots::map_risk(risk = risk,
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 
-```{r dengue_risk_map, echo=FALSE}
+```{r dengue_risk_map, echo=FALSE, out.height="90%", out.width="90%"}
+mapview::mapviewOptions(leafletWidth = 1600, 
+                        leafletHeight = 900,
+                        legend = FALSE)
+
 # Step 1. load the AGEE ####
 mex <- rgeomex::AGEE_inegi19_mx
 
