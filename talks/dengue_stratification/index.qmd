@@ -328,13 +328,14 @@ width = "800px")
 
 ::: aside
 [Dzul-Manzanilla et al 2021](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(21)00030-9/fulltext)
+
+[Dzul-Manzanilla et al 2019](https://www.researchgate.net/publication/338595327_HOTSPOTS_DE_Aedes_aegypti_EN_EL_AREA_METROPOLITANA_DE_VERACRUZ_MEXICO)
 :::
 
 
 
 ## [1.Hotspots de la Transmisión Persistente de las Arbovirosis en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
-
 
 :::: {.columns}
 
@@ -353,7 +354,6 @@ width = "800px")
 :::
 
 ::: {.column style="width: 50%"}
-
 ```{r, dpi=300,echo=FALSE, fig.align ="center", out.width = "100%"}
 DiagrammeR::grViz("digraph {
 
