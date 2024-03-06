@@ -564,6 +564,38 @@ son las áreas o las unidades espaciales con valores altos de $\color{#2ECC40}G_
 :::
 
 
+# [Análisis Geoestadístico]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/spatial_analysis_dengue/guadalajara_sample.jpg?raw=true)
+:::
+
+::: {.column style="width: 50%; font-size: 100%"}
+$s{_i}$ sitios de colecta con coordenadas geográficas (longitud. latitud).
+&nbsp;
+
+$D$ area de estudio (zona metropolitana de Guadalajara).
+&nbsp;
+
+$Y{_i}$ es la variable de respuesta (Número de Huevos por Ovitrampa o Manzana).
+&nbsp;
+
+$y{_i}$ tiene una distribución (binomial negativa ó zibn).
+&nbsp;
+
+$U{_s{_i}}$ el efecto espacial & el proceso ocurre en un campo gaussiano continuo (Gaussian Field).
+
+Se usa SPDE & Elemento Finito para aproximar la matriz de covarianzas de $U{_s{_i}}$
+
+$\color{#2ECC40}{el \space proceso \space se \space encuentra \space implementado \space en \space INLA}$
+:::
+
+::::
+
 
 ## [Dios Botic]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
