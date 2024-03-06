@@ -411,7 +411,7 @@ width = "800px")
 
 ::: {.column style="width: 50%"}
 
-```{r, echo=FALSE,dpi=300,  fig.align ="center",out.height="70%", out.width = "90%"}
+```{r, echo=FALSE,dpi=300,  fig.align ="center",out.height="100%", out.width = "90%"}
 DiagrammeR::grViz("digraph {
 
   # graph definitions
@@ -471,7 +471,7 @@ DiagrammeR::grViz("digraph {
 :::
 
 ::: {.column style="width: 50%"}
-```{r, echo=FALSE,dpi=300, fig.align ="center", out.height="70%", out.width = "90%"}
+```{r, echo=FALSE,dpi=300, fig.align ="center", out.height="100%", out.width = "90%"}
 DiagrammeR::grViz("digraph {
 
   # graph definitions
@@ -531,6 +531,7 @@ DiagrammeR::grViz("digraph {
 ::: aside
 [Modificado de Zuur et al 2017](http://www.highstat.com/index.php/beginner-s-guide-to-regression-models-with-spatial-and-temporal-correlation); [Dzul-Manzanilla et al 2019](https://www.researchgate.net/publication/338595327_HOTSPOTS_DE_Aedes_aegypti_EN_EL_AREA_METROPOLITANA_DE_VERACRUZ_MEXICO)
 :::
+
 
 
 
