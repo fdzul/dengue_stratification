@@ -183,7 +183,7 @@ Realizar el Análisis Espacial de las Arbovirosis en México.
 
 :::: {.columns}
 
-::: {.column style="width: 50%}
+::: {.column style="width: 50%"}
 ```{r, echo=FALSE, out.width='100%', fig.align ="center"}
 DiagrammeR::grViz("digraph {
                   # graph definitions
