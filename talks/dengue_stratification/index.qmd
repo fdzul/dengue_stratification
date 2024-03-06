@@ -596,6 +596,282 @@ $\color{#2ECC40}{el \space proceso \space se \space encuentra \space implementad
 
 ::::
 
+## [Desarrollo Conceptual del **Modelo Estratégico de Focalización del Dengue**]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+Concepto
+
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/transmision_persistente.jpg?raw=true){.absolute right="800" height="815"}
+:::
+
+:::{.column style="width: 50%"}
+Mapa de riesgo
+<img src = "https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/spatial_analysis_dengue/fig/map_risk_guadalajara.jpg?raw=true">
+:::
+
+::::
+
+## [Definición de los Escenarios Operativos ó Epidemiológicos]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 40%;font-size: 100%"}
+&nbsp;
+
+<span style="color:#F44B1FFF;">Riesgo Muy Alto de Transmisión.</span> Hotposts de casos + hotspots del vector.
+
+&nbsp;
+
+<span style="color:#FF9000FF;">Riesgo Alto de Transmisión.</span> Hotspots de transmisión.
+
+&nbsp;
+
+<span style="color:gold;">Riesgo Medio de Transmisión.</span>Hotspots del vector.
+
+&nbsp;
+
+<span style="color:#00F293FF;">Riesgo Bajo de Transmisión.</span>Sin hotspots de transmisión o hotspots del vector.
+
+:::
+
+::: {.column style="width: 60%"}
+```{r risk_merida2}
+#| fig-width: 10
+#| fig-height: 10
+#| echo: false
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_31_yucatan,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = "Mérida",
+                               cve_edo = "31")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+::::
+
+
+## [Transmisión Persistente & Abundancia Persistente en Guadalajara & Mérida]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+<html>
+<head>
+```{=html}
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 5px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+}
+</style>
+```
+</head>
+<body>
+<h1>
+</h1>
+<p>
+</p>
+
+::: grid-container
+
+::: grid-item
+Localidad
+:::
+
+::: grid-item
+Transmisión
+:::
+
+::: grid-item
+Vector
+:::
+
+::: grid-item
+Escenarios
+:::
+
+::: grid-item
+Mérida
+:::
+
+::: grid-item
+```{r hotspots_cases_merida, out.height="110%", out.width="110%"}
+# Step 1. extract the locality ####
+loc <- rgeomex::extract_locality(cve_edo = "31", 
+                                 locality = "Merida")
+
+# Step 2. Extract the hotspots ####
+hotspots <- denmex::den_hotspots[loc, ]
+
+# Step 3. Vizualization of hotspots ####
+
+hotspots |>
+    denhotspots::staticmap_intensity(pal = rcartocolor::carto_pal,
+                                 pal_name = TRUE,
+                                 name = "OrYel",
+                                 breaks = 1,
+                                 dir_pal = -1,
+                                 x_leg = 0.5,
+                                 y_leg = 0.1,
+                                 ageb = TRUE)
+```
+:::
+
+::: grid-item
+```{r hotspots_vector_merida, out.height="110%", out.width="110%"}
+source("/Users/fdzul/Dropbox/r_developments/r_talks/2023/reunion_interstatal_2023/reunion_quintana_roo/functions/intensity_eggs.R")
+
+denmex::eggs_betas_31_yucatan |>
+    dplyr::filter(year == 2019) |>
+    intensity_eggs(locality = "Mérida",
+                    cve_ent = "31",
+                    palette = rcartocolor::carto_pal,
+                    name = "SunsetDark")
+
+
+
+```
+:::
+
+::: grid-item
+```{r risk_merida, out.height="110%", out.width="110%"}
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_31_yucatan,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = "Mérida",
+                               cve_edo = "31")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+::: grid-item
+Guadalajara
+:::
+
+::: grid-item
+```{r hotspots_cases_guadalajara, out.height="110%", out.width="110%"}
+# Step 1. extract the locality ####
+loc <- rgeomex::extract_locality(cve_edo = "14", 
+                                 locality = c("Guadalajara",
+                                              "Tlaquepaque",
+                                              "Tonalá",
+                                              "Zapopan"))
+
+# Step 2. Extract the hotspots ####
+hotspots <- denmex::den_hotspots[loc, ]
+
+# Step 3. Vizualization of hotspots ####
+
+hotspots |>
+    denhotspots::staticmap_intensity(pal = rcartocolor::carto_pal,
+                                 pal_name = TRUE,
+                                 name = "OrYel",
+                                 breaks = 1,
+                                 dir_pal = -1,
+                                 x_leg = 0.5,
+                                 y_leg = 0.1,
+                                 ageb = TRUE)
+```
+:::
+
+::: grid-item
+```{r hotspots_vector_guadalajara, out.height="110%", out.width="110%"}
+source("/Users/fdzul/Dropbox/r_developments/r_talks/2023/reunion_interstatal_2023/reunion_quintana_roo/functions/intensity_eggs.R")
+
+denmex::eggs_betas_14_jalisco |>
+    dplyr::filter(year == 2019) |>
+    intensity_eggs(locality = c("Guadalajara",
+                                "Tlaquepaque",
+                                "Tonalá",
+                                "Zapopan"),
+                    cve_ent = "14",
+                    palette = rcartocolor::carto_pal,
+                    name = "SunsetDark")
+
+
+
+```
+:::
+
+::: grid-item
+```{r risk_guadalajara, out.height="110%", out.width="110%"}
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_14_jalisco,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = c("Guadalajara",
+                                              "Tlaquepaque",
+                                              "Tonalá",
+                                              "Zapopan"),
+                               cve_edo = "14")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+:::
+
+</body>
+</html>
+
+
+## [Transmisión Persistente & Abundancia Persistente: Avances]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+```{r dengue_risk_map}
+# Step 1. load the AGEE ####
+mex <- rgeomex::AGEE_inegi19_mx
+
+# Step 3. make the tible link ####
+link <- tibble::tibble(CVE_ENT = c("31", "30", "23","20", "04", "17", "14", "16"),
+                       link = c("https://beautiful-haupia-810701.netlify.app/",
+                               "https://zippy-bunny-bdd8c7.netlify.app/",
+                               "https://helpful-pegasus-ba8bb9.netlify.app/",
+                               "https://merry-figolla-08f5bf.netlify.app/",
+                               "https://phenomenal-hotteok-02e188.netlify.app/",
+                               "https://glistening-griffin-b8023f.netlify.app/",
+                               "https://heartfelt-fudge-936865.netlify.app",
+                               "https://fabulous-mermaid-31ea6a.netlify.app"))
+
+# Step 3. left joint ####
+mex_link <- dplyr::left_join(x = link,
+                             y = mex,
+                             by = "CVE_ENT") |>
+    dplyr::mutate(Estado = paste0(": <a href=", 
+                                  link,">", 
+                                  NOMGEO, "</a>")) |>
+    as.data.frame() |>
+    sf::st_set_geometry(value = "geometry") 
+
+mex_link |>
+    mapview::mapview(popup = "Estado",
+                     legend = FALSE)
+```
+
 
 ## [Dios Botic]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
