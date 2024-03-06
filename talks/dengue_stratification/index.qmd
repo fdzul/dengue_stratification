@@ -241,8 +241,8 @@ DiagrammeR::grViz("digraph {
  
  {geoda cluster_s satscan lgcp} -> r_rstudio -> denhotspot
  
-}", heigh = "500px",
-width = "800px")
+}", heigh = "1000px",
+width = "1000px")
 
 ```
 
