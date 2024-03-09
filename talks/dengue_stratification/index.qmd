@@ -21,16 +21,19 @@ execute:
 <h2> </h2>
 
 <hr>
+<hr>
 
 <br> 
-<br> 
+<h3>Alumno</h3>
 <h3>Dr. Felipe Dzul Manzanilla </h3>
+<br> 
+<h3>Director </h3>
 <h3>Dr. Héctor Gómez-Dantés</h3>
 <br> 
 <br> 
-<h3> Create    2024-02-05</h3>
-<h3> Updated   2024-02-05</h3>
-<h3> Compiled 2024-02-05</h3>
+<h3> Create:   2024-02-05</h3>
+<h3> Updated:  2024-02-08</h3>
+<h3> Compiled: 2024-02-08</h3>
 <br> 
 
 
@@ -404,7 +407,7 @@ width = "800px")
 :::
 
 
-## [Hotspots de Abundancia Persistente del Cector en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
+## [Hotspots de Abundancia Persistente del Vector en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 :::: {.columns}
@@ -875,6 +878,9 @@ mex_link |>
     mapview::mapview(popup = "Estado",
                      legend = FALSE)
 ```
+
+
+
 
 
 ## [Dios Botic]{style="color:#003300;"}
