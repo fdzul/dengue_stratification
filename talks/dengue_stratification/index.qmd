@@ -249,13 +249,30 @@ DiagrammeR::grViz("digraph {
 }", heigh = 500, width = 800)
 ```
 
+## [Epi-Features para la descripción de las Series Temporales de Dengue]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019"> 
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+![](almeida_2022.png)
+
+:::
+
+::: {.column style="width: 50%"}
+![](epi_features.png)
+:::
+
+::::
+
 
 ## [Capas Climáticas Libres con buena resolución]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 ![](layers_wb.png)
 
-## [Capas de Transmisión Potencial]{.r-fit-text style="color:#003300;"}
+## [Capas de Transmisión Potencial de Dengue]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 ```{r, echo=FALSE}
