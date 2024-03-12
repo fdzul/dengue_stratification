@@ -30,8 +30,8 @@ execute:
 <br> 
 <br> 
 <h3> Create:   2024-02-05</h3>
-<h3> Updated:  2024-02-08</h3>
-<h3> Compiled: 2024-02-08</h3>
+<h3> Updated:  2024-02-12</h3>
+<h3> Compiled: 2024-02-12</h3>
 <br> 
 
 
@@ -779,6 +779,22 @@ $\color{#2ECC40}{el \space proceso \space se \space encuentra \space implementad
 :::
 
 ::::
+
+## [**Modelos Geoestadísticos del Vector del Dengue**]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+| Ecuación  	|   Efecto	|   
+|---	|---	|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#ECB22E}{u_i} +\color{#6200B4}{e_i}$|Espacial sin covariables|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#6200B4}{e_i}$|  Espacial + Variables Climáticas|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#6200B4}{e_i}$|  Espacial + combinación Líneal de las Variables Climáticas|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#ECB22E}{u_i} + \color{#ECB22E}{\alpha_i} +\color{#6200B4}{e_i}$|Efecto Espacial + Effecto Aleatorio sin covariables|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#ECB22E}{\alpha_i} +\color{#6200B4}{e_i}$ |Efecto Espacial + Effecto Aleatorio + Variables Climáticas|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#ECB22E}{\alpha_i} +\color{#6200B4}{e_i}$|Efecto Espacial + Effecto Aleatorio + Combinación lineal de Variables Climáticas|
+|$\color{#2EB67D}{y_{st}} = \color{#36C5F0}{\beta_0} + \color{#ECB22E}{v_{st}} + \color{#6200B4}{e_{st}}$| Efecto Espacio-Temporal|
+|$\color{#2EB67D}{y_{st}} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{v_{st}} + \color{#6200B4}{e_{st}}$|Efecto Espacio-Temporal + Variables Climáticas|
+|$\color{#2EB67D}{y_{st}} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{v_{st}} + \color{#6200B4}{e_{st}}$ |Efecto Espacio-Temporal + Combinación lineal de Variables Climáticas|
+
 
 ## [Desarrollo Conceptual del **Modelo Estratégico de Focalización del Dengue**]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
