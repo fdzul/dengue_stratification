@@ -31,7 +31,7 @@ execute:
 <br> 
 <h3> Create:   2024-02-05</h3>
 <h3> Updated:  2024-02-12</h3>
-<h3> Compiled: 2024-02-12</h3>
+<h3> Compiled: 2024-02-13</h3>
 <br> 
 
 
@@ -102,7 +102,7 @@ execute:
 
 ::::
 
-## [Coherencia Espacial Entre las Arbobvirosis en México ([Dzul-Manzanilla et al 2021](https://www.sciencedirect.com/science/article/pii/S2542519621000309#fig1))]{style="color:#003300;" .r-fit-text}
+## [Coherencia Espacial entre las Arbovirosis ([Dzul-Manzanilla et al 2021](https://www.sciencedirect.com/science/article/pii/S2542519621000309#fig1))]{style="color:#003300;" .r-fit-text}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 :::: {.columns}
@@ -133,7 +133,7 @@ execute:
 
 ### Hipótesis
 
-La concordancia espacial entre el [binomio hotspots de la transmisión persistente-hotspots de la abundancia persistente](), y el [trinomio cadenas de transmisión-hotspots de la abundancia-reciente-mapas de calor](), proporcionan un marco de estratificación para la [identificación de los escenarios escenarios epidemiológicos u operativos]() que permiten desarrollar un modelo estratégico de focalización para el control integrado de las arbovirosis
+La concordancia espacial entre el [binomio hotspots de la transmisión persistente-hotspots de la abundancia persistente del vector](), y el [trinomio cadenas de transmisión-hotspots de la abundancia-mapas de calor](), proporcionan un marco de estratificación para la [identificación de los escenarios escenarios epidemiológicos u operativos]() que permiten desarrollar un modelo estratégico de focalización para el control integrado de las arbovirosis
 
 &nbsp;
 
@@ -246,7 +246,7 @@ DiagrammeR::grViz("digraph {
                   index_compuesto -> {dal hotspots2 pl} 
                   
                   
-}", heigh = 500, width = 800)
+}", height = 800, width = 1200)
 ```
 
 ## [Epi-Features para la descripción de las Series Temporales de Dengue]{style="color:#003300;"}
@@ -588,7 +588,7 @@ width = "800px")
 :::
 
 
-## [Hotspots de Abundancia Persistente del Vector en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
+## [2. Hotspots de Abundancia Persistente del Vector en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 :::: {.columns}
@@ -748,7 +748,7 @@ son las áreas o las unidades espaciales con valores altos de $\color{#2ECC40}G_
 :::
 
 
-# [Análisis Geoestadístico]{style="color:#003300;"}
+# [Análisis Geoestadístico del Vector]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 
@@ -1075,7 +1075,6 @@ mex_link |>
     mapview::mapview(popup = "Estado",
                      legend = FALSE)
 ```
-
 
 
 
