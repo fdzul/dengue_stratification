@@ -223,7 +223,7 @@ DiagrammeR::grViz("digraph {
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 
-::: {.column style="width: 100%; font-size: 60%"}
+::: {.column style="width: 100%; font-size: 100%"}
  **Modelo General** 
 $$\varLambda{_s} = exp(n{_s})$$
 El modelo asume que los casos son una parcial realización de un proceso Gausiano (log-Gaussian).
