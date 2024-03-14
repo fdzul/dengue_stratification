@@ -1,0 +1,162 @@
+---
+format: 
+  revealjs:
+    #theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    logo: "https://www.insp.mx/assets/images/insp.png"
+    footer: "[github.com/fdzul](https://github.com/fdzul)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1>Análisis Espacial del Dengue<br>en México</h1>
+
+<h2>
+
+</h2>
+
+<hr>
+
+<br>
+
+<h3>Alumno</h3>
+
+<h3>Dr. Felipe Dzul Manzanilla</h3>
+
+<br>
+
+<h3>Director</h3>
+
+<h3>Dr. Héctor Gómez-Dantés</h3>
+
+<br> <br>
+
+<h3>Create: 2024-02-14</h3>
+
+<h3>Updated: 2024-02-14</h3>
+
+<h3>Compiled: 2024-02-14</h3>
+
+<br>
+
+![](chains_ticul_2023.jpg){.absolute top="250" left="700" width="1000"}
+
+
+
+## [Candenas de Transmisión Knox Test]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%; font-size: 80%"}
+1. Bajar las bases de datos del **[SINAVE](https://www.sinave.gob.mx/)**.
+&nbsp;
+
+2. Geocodificar las bases.
+&nbsp;
+
+3. Generar la base (onset y coordenadas).
+&nbsp;
+
+4. Aplicar el [**Knox test**]().
+&nbsp;
+
+5. Definir los [**Space-Time link**]().
+&nbsp;
+
+6. Visualizar [**Space-Time link**]().
+]
+:::
+
+
+::: {.column style="width: 50%"}
+
+```{r, dpi=300,echo=FALSE, fig.align ="center", out.width = "100%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  
+  
+  
+  # edge definition
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  
+  # flowchart for sinave
+  sinave [label = 'SINAVE',  fillcolor = '#0F9D58', color = 'white', fontcolor = 'white']
+  denv [label = 'Bases de DENV',  fillcolor = '#0F9D58', color = 'white', fontcolor = 'white']
+  geocode [label = 'Geocodificación',  fillcolor = '#0F9D58', color = 'white', fontcolor = 'white']
+ 
+  
+  # knox
+  base [label = 'Genera la base (onset-coordenadas)',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+  
+  knox [label = 'Knox test',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+  
+  time_link [label = 'Space-Time Link',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+  
+   vis [label = 'Visualización',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white'] 
+  
+  # edge definitions with the node IDs
+  sinave -> denv -> geocode -> base -> knox -> time_link -> vis
+  
+   
+ 
+  }", 
+  height = 550)
+
+```
+:::
+::::
+
+::: aside
+[Knox, 1963](https://www.jstor.org/stable/25565339);
+[Knox & Bartlett, 1964](https://www.jstor.org/stable/2985220)
+:::
+
+
+## [Candenas de Transmisión Knox Test]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+::: {.column style="width: 100%; font-size: 75%"}
+$$\color{Orange}{Knox} = \frac{1}{2} \sum_{i=1}^{n}  \sum_{i=1}^{n} \color{Green}{S_{ij}} \color{red}{T_{ij}}$$
+donde:
+
+$\color{Green}{S_{ij}}$ = 1 si el caso $( i\ne j)$ & la $d_{ij} \le \delta^s$ (metros = 400), de lo contrario 0.
+
+$\color{red}{T_{ij}}$ = 1 si el caso $( i\ne j)$ & la $d_{ij} \le \delta^t$ (dÍas = 20), de los contrario 0.
+
+**Hipotesis Nula** las distancias temporales entre pares de casos son independientes de las distancias espaciales.
+
+**Hipotesis Alternativa** existe dependencia de las distancias espaciales y temporales entre los pares de casos (existen cadenas de transmisión).
+
+:::
+
+::: aside
+[Viet al 2015]()
+:::
+
+
+
+## [Mapas de Calor de la Transmisión de los virus del Dengue]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+## [LGCP de la Transmisión de los virus del Dengue]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+## [Hotspots del Vector del Dengue]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
