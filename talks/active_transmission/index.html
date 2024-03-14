@@ -362,7 +362,7 @@ Compiled: 2024-02-14
 </section><section id="candenas-de-transmisión-knox-test" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Candenas de Transmisión Knox Test</span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 <div class="columns">
-<div class="column" style="width: 50%; font-size: 80%">
+<div class="column" style="width: 50%; font-size: 100%">
 <ol type="1">
 <li><p>Bajar las bases de datos del <strong><a href="https://www.sinave.gob.mx/">SINAVE</a></strong>. &nbsp;</p></li>
 <li><p>Geocodificar las bases. &nbsp;</p></li>
@@ -374,8 +374,8 @@ Compiled: 2024-02-14
 </div><div class="column" style="width: 50%">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="htmlwidget-9e1cd7b9832b1a119541" style="width:100%;height:550px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9e1cd7b9832b1a119541">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  \n  \n  # edge definition\n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  # flowchart for sinave\n  sinave [label = \"SINAVE\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n \n  \n  # knox\n  base [label = \"Genera la base (onset-coordenadas)\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  knox [label = \"Knox test\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  time_link [label = \"Space-Time Link\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n   vis [label = \"Visualización\",  fillcolor =  \"DodgerBlue\", color = \"white\", fontcolor = \"white\"] \n  \n  # edge definitions with the node IDs\n  sinave -> denv -> geocode -> base -> knox -> time_link -> vis\n  \n   \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d05507c6c16093839227" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d05507c6c16093839227">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  \n  \n  # edge definition\n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  # flowchart for sinave\n  sinave [label = \"SINAVE\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n \n  \n  # knox\n  base [label = \"Genera la base (onset-coordenadas)\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  knox [label = \"Knox test\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  time_link [label = \"Space-Time Link\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n   vis [label = \"Visualización\",  fillcolor =  \"DodgerBlue\", color = \"white\", fontcolor = \"white\"] \n  \n  # edge definitions with the node IDs\n  sinave -> denv -> geocode -> base -> knox -> time_link -> vis\n  \n   \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -385,11 +385,13 @@ Compiled: 2024-02-14
 <p><a href="https://www.jstor.org/stable/25565339">Knox, 1963</a>; <a href="https://www.jstor.org/stable/2985220">Knox &amp; Bartlett, 1964</a></p>
 </div></aside></section><section id="candenas-de-transmisión-knox-test-1" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Candenas de Transmisión Knox Test</span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
-<div class="column" style="width: 100%; font-size: 75%">
+<div class="column" style="width: 100%; font-size: 100%">
 <p><span class="math display">\[\color{Orange}{Knox} = \frac{1}{2} \sum_{i=1}^{n}  \sum_{i=1}^{n} \color{Green}{S_{ij}} \color{red}{T_{ij}}\]</span> donde:</p>
 <p><span class="math inline">\(\color{Green}{S_{ij}}\)</span> = 1 si el caso <span class="math inline">\(( i\ne j)\)</span> &amp; la <span class="math inline">\(d_{ij} \le \delta^s\)</span> (metros = 400), de lo contrario 0.</p>
 <p><span class="math inline">\(\color{red}{T_{ij}}\)</span> = 1 si el caso <span class="math inline">\(( i\ne j)\)</span> &amp; la <span class="math inline">\(d_{ij} \le \delta^t\)</span> (dÍas = 20), de los contrario 0.</p>
+<p>&nbsp;</p>
 <p><strong>Hipotesis Nula</strong> las distancias temporales entre pares de casos son independientes de las distancias espaciales.</p>
+<p>&nbsp;</p>
 <p><strong>Hipotesis Alternativa</strong> existe dependencia de las distancias espaciales y temporales entre los pares de casos (existen cadenas de transmisión).</p>
 </div>
 

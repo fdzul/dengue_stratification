@@ -56,7 +56,7 @@ execute:
 
 :::: {.columns}
 
-::: {.column style="width: 50%; font-size: 80%"}
+::: {.column style="width: 50%; font-size: 100%"}
 1. Bajar las bases de datos del **[SINAVE](https://www.sinave.gob.mx/)**.
 &nbsp;
 
@@ -129,7 +129,7 @@ DiagrammeR::grViz("digraph {
 ## [Candenas de Transmisión Knox Test]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
-::: {.column style="width: 100%; font-size: 75%"}
+::: {.column style="width: 100%; font-size: 100%"}
 $$\color{Orange}{Knox} = \frac{1}{2} \sum_{i=1}^{n}  \sum_{i=1}^{n} \color{Green}{S_{ij}} \color{red}{T_{ij}}$$
 donde:
 
@@ -137,7 +137,11 @@ $\color{Green}{S_{ij}}$ = 1 si el caso $( i\ne j)$ & la $d_{ij} \le \delta^s$ (m
 
 $\color{red}{T_{ij}}$ = 1 si el caso $( i\ne j)$ & la $d_{ij} \le \delta^t$ (dÍas = 20), de los contrario 0.
 
+&nbsp;
+
 **Hipotesis Nula** las distancias temporales entre pares de casos son independientes de las distancias espaciales.
+
+&nbsp;
 
 **Hipotesis Alternativa** existe dependencia de las distancias espaciales y temporales entre los pares de casos (existen cadenas de transmisión).
 
