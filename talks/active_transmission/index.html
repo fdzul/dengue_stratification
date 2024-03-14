@@ -374,8 +374,8 @@ Compiled: 2024-02-14
 </div><div class="column" style="width: 50%">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="htmlwidget-d05507c6c16093839227" style="width:100%;height:550px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d05507c6c16093839227">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  \n  \n  # edge definition\n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  # flowchart for sinave\n  sinave [label = \"SINAVE\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n \n  \n  # knox\n  base [label = \"Genera la base (onset-coordenadas)\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  knox [label = \"Knox test\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  time_link [label = \"Space-Time Link\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n   vis [label = \"Visualización\",  fillcolor =  \"DodgerBlue\", color = \"white\", fontcolor = \"white\"] \n  \n  # edge definitions with the node IDs\n  sinave -> denv -> geocode -> base -> knox -> time_link -> vis\n  \n   \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bcaef7d29681836218ca" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bcaef7d29681836218ca">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  \n  \n  # edge definition\n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  # flowchart for sinave\n  sinave [label = \"SINAVE\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n \n  \n  # knox\n  base [label = \"Genera la base (onset-coordenadas)\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  knox [label = \"Knox test\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n  time_link [label = \"Space-Time Link\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n   vis [label = \"Visualización\",  fillcolor =  \"DodgerBlue\", color = \"white\", fontcolor = \"white\"] \n  \n  # edge definitions with the node IDs\n  sinave -> denv -> geocode -> base -> knox -> time_link -> vis\n  \n   \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -397,8 +397,37 @@ Compiled: 2024-02-14
 
 <aside><div>
 <p><a href="">Viet al 2015</a></p>
-</div></aside></section><section id="mapas-de-calor-de-la-transmisión-de-los-virus-del-dengue" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Mapas de Calor de la Transmisión de los virus del Dengue</span></h2>
-<hr style="height:2px;border-width:0;color:#330019;background-color:#330019"></section><section id="lgcp-de-la-transmisión-de-los-virus-del-dengue" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">LGCP de la Transmisión de los virus del Dengue</span></h2>
+</div></aside></section><section id="log-gaussian-cox-process" class="slide level2"><h2><span style="color:#003300;">Log-Gaussian Cox Process</span></h2>
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+<div class="columns">
+<div class="column" style="width: 50%; font-size: 100%">
+<ol type="1">
+<li><p>Bajar las bases de datos del <strong><a href="https://www.sinave.gob.mx/">SINAVE</a></strong>. &nbsp;</p></li>
+<li><p>Geocodificar las bases. &nbsp;</p></li>
+<li><p>Aplicar el <a href=""><strong>LGCP</strong></a>. &nbsp;</p></li>
+<li><p>Visualizar <a href=""><strong>el modelo</strong></a></p></li>
+</ol>
+</div><div class="column" style="width: 50%">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="htmlwidget-36ca85ef7509a783ab1c" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-36ca85ef7509a783ab1c">{"x":{"diagram":"digraph {\n\n  # graph definitions\n  graph [layout = dot, rankdir = TB]\n  \n  # node definitions\n  node [shape = rectangle, style = filled, color = grey] \n  \n  \n  \n  # edge definition\n  edge [color = grey, arrowhead = normal, arrowtail = dot]\n  \n  # flowchart for sinave\n  sinave [label = \"SINAVE\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  denv [label = \"Bases de DENV\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n  geocode [label = \"Geocodificación\",  fillcolor = \"#0F9D58\", color = \"white\", fontcolor = \"white\"]\n \n  \n  # knox\n  lgcp [label = \"LGCP\",  fillcolor =  \"orange\", color = \"white\", fontcolor = \"black\"]\n  \n \n  \n   vis [label = \"Visualización\",  fillcolor =  \"DodgerBlue\", color = \"white\", fontcolor = \"white\"] \n  \n  # edge definitions with the node IDs\n  sinave -> denv -> geocode -> lgcp  -> vis\n  \n   \n \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p><a href="https://journal.r-project.org/archive/2021/RJ-2021-017/RJ-2021-017.pdf">Moraga, 2020</a></p>
+</div></aside></section><section id="log-gaussian-cox-process-1" class="slide level2"><h2><span style="color:#003300;">Log-Gaussian Cox Process</span></h2>
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+<div class="column" style="width: 100%; font-size: 60%">
+<p><strong>Modelo General</strong> <span class="math display">\[\varLambda{_s} = exp(n{_s})\]</span> El modelo asume que los casos son una parcial realización de un proceso Gausiano (log-Gaussian).</p>
+<p><strong>Modelo en un Grid</strong> <span class="math display">\[\varLambda_{ij} = \int\limits_{s_{ij}}^{} exp(n(s))ds\]</span> <span class="math display">\[\varLambda_{ij} \approx |s_{ij}| exp(n_{ij})\]</span> donde <span class="math inline">\(|s_{ij}|\)</span> es el área de la celda <span class="math inline">\(s_{ij}\)</span></p>
+<p><span class="math inline">\(y_{ij}|n_{ij} \sim Poisson(|s_{ij}|exp(n_{ij}))\)</span></p>
+<p><span class="math inline">\(n_{ij} = \beta{_0} + \beta{_1} \space x \space cov (s_{ij}) + f{_s}(s_{ij}) + f{_u}(s_{ij})\)</span></p>
+</div>
+</section><section id="mapas-de-calor-de-la-transmisión-de-los-virus-del-dengue" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Mapas de Calor de la Transmisión de los virus del Dengue</span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019"></section><section id="hotspots-del-vector-del-dengue" class="slide level2"><h2><span class="r-fit-text" style="color:#003300;">Hotspots del Vector del Dengue</span></h2>
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 <div class="quarto-auto-generated-content">

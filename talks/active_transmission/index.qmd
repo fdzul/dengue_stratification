@@ -152,11 +152,96 @@ $\color{red}{T_{ij}}$ = 1 si el caso $( i\ne j)$ & la $d_{ij} \le \delta^t$ (dÍ
 :::
 
 
-
-## [Mapas de Calor de la Transmisión de los virus del Dengue]{.r-fit-text style="color:#003300;"}
+## [Log-Gaussian Cox Process]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
-## [LGCP de la Transmisión de los virus del Dengue]{.r-fit-text style="color:#003300;"}
+:::: {.columns}
+
+::: {.column style="width: 50%; font-size: 100%"}
+
+1. Bajar las bases de datos del **[SINAVE](https://www.sinave.gob.mx/)**.
+&nbsp;
+
+2. Geocodificar las bases.
+&nbsp;
+
+3. Aplicar el [**LGCP**]().
+&nbsp;
+
+4. Visualizar [**el modelo**]()
+
+:::
+
+
+::: {.column style="width: 50%"}
+```{r, dpi=300,echo=FALSE, fig.align ="center", out.width = "100%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  
+  
+  
+  # edge definition
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  
+  # flowchart for sinave
+  sinave [label = 'SINAVE',  fillcolor = '#0F9D58', color = 'white', fontcolor = 'white']
+  denv [label = 'Bases de DENV',  fillcolor = '#0F9D58', color = 'white', fontcolor = 'white']
+  geocode [label = 'Geocodificación',  fillcolor = '#0F9D58', color = 'white', fontcolor = 'white']
+ 
+  
+  # knox
+  lgcp [label = 'LGCP',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+  
+ 
+  
+   vis [label = 'Visualización',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white'] 
+  
+  # edge definitions with the node IDs
+  sinave -> denv -> geocode -> lgcp  -> vis
+  
+   
+ 
+  }", 
+  height = 550)
+
+```
+:::
+
+::::
+
+::: aside
+[Moraga, 2020](https://journal.r-project.org/archive/2021/RJ-2021-017/RJ-2021-017.pdf) 
+:::
+
+
+## [Log-Gaussian Cox Process]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+::: {.column style="width: 100%; font-size: 60%"}
+ **Modelo General** 
+$$\varLambda{_s} = exp(n{_s})$$
+El modelo asume que los casos son una parcial realización de un proceso Gausiano (log-Gaussian).
+
+ **Modelo en un Grid** 
+$$\varLambda_{ij} = \int\limits_{s_{ij}}^{} exp(n(s))ds$$
+$$\varLambda_{ij} \approx |s_{ij}| exp(n_{ij})$$
+donde $|s_{ij}|$ es el área de la celda $s_{ij}$
+
+$y_{ij}|n_{ij} \sim Poisson(|s_{ij}|exp(n_{ij}))$
+
+$n_{ij} = \beta{_0} + \beta{_1} \space x \space cov (s_{ij}) + f{_s}(s_{ij}) + f{_u}(s_{ij})$
+
+
+:::
+
+
+## [Mapas de Calor de la Transmisión de los virus del Dengue]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
 
