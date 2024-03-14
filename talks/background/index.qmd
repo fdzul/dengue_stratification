@@ -168,19 +168,10 @@ La concordancia espacial entre el [binomio hotspots de la transmisión persisten
 
 [8. Desarrollar un modelo estratégico de focalización del dengue en las localidades prioritarias.]()
 
-## [Flujograma de la Estratificación de Localidades]{style="color:#003300;"}
-<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
-
-![](flowchar_analysis.png){.absolute right="0" width="2050" left="0" height="815"}
-
-
-::: aside
-[Lim et al 2023](https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-023-08717-8)
-:::
 
 ## [Flujograma de la Estratificación de Localidades]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width='100%', out.height="100%"}
 # General  ####
 DiagrammeR::grViz("digraph {
                   # graph definitions
@@ -246,8 +237,33 @@ DiagrammeR::grViz("digraph {
                   index_compuesto -> {dal hotspots2 pl} 
                   
                   
-}", height = 800, width = 1200)
+}", height = 700, width = 1600)
 ```
+
+::: aside
+[Lim et al 2023](https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-023-08717-8)
+:::
+
+
+## [Composite Vulnerability Index of Risk Mortality]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019"> 
+
+![](cotache_condor.png)
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+
+![](vulnerability_index_score.png)
+:::
+
+::: {.column style="width: 50%"}
+
+![](hot_spot_analysis.png)
+:::
+
+::::
+
 
 ## [Epi-Features para la descripción de las Series Temporales de Dengue]{style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019"> 
@@ -429,8 +445,8 @@ DiagrammeR::grViz("digraph {
  
  {geoda cluster_s satscan lgcp} -> r_rstudio -> denhotspot
  
-}", heigh = "1000px",
-width = "1200px")
+}", heigh = "700px",
+width = "800px")
 
 ```
 :::
