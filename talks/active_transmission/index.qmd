@@ -244,6 +244,59 @@ $n_{ij} = \beta{_0} + \beta{_1} \space x \space cov (s_{ij}) + f{_s}(s_{ij}) + f
 ## [Mapas de Calor de la Transmisión de los virus del Dengue]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
 
+:::: {.columns}
+
+::: {.column style="width: 50%; font-size: 100%"}
+
+Los mapas de calor o heatmaps son herramientas que proporcionan la densidad de
+de puntos geográficos del evento de interes o del evento que deseamos analizar.
+Los datos que requiere el algoritmo son datos de patron de puntos espaciales.
+
+:::
+
+
+::: {.column style="width: 50%"}
+```{r, echo=FALSE}
+# Step 2. load the dengue dataset geocoded ####
+load("/Users/fdzul/Library/CloudStorage/OneDrive-Personal/proyects/geocoding_mex/2024/8.RData/denmex_2024.RData")
+
+# step 3. apply the function ####
+####
+densnv::mp_heatmap(geocoded_dataset = z,
+                   cve_edo = "31",
+                   locality = c("Mérida"),
+                   status_caso = c(1,2),
+                   week = 1:3,
+                   alpha = 0.6,
+                   static = FALSE,
+                   palette = viridis::turbo)
+```
+
+```{r, echo=FALSE}
+# Step 2. load the dengue dataset geocoded ####
+load("/Users/fdzul/Library/CloudStorage/OneDrive-Personal/proyects/geocoding_mex/2024/8.RData/denmex_2024.RData")
+
+# step 3. apply the function ####
+####
+densnv::mp_heatmap(geocoded_dataset = z,
+                   cve_edo = "31",
+                   locality = c("Mérida"),
+                   status_caso = c(1,2),
+                   zoom = 12,
+                   week = 1:3,
+                   alpha = 0.6,
+                   map_type = "satellite",
+                   static = TRUE,
+                   palette = viridis::turbo)
+```
+
+
+:::
+
+::::
+
+
+
 
 ## [Hotspots del Vector del Dengue]{.r-fit-text style="color:#003300;"}
 <hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
