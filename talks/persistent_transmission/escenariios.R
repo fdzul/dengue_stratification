@@ -41,4 +41,12 @@ mapview::mapviewOptions(leafletWidth = 1600,
 
 mapview::mapview(mex,
                  popup = "Estado",
-                 legend = FALSE)
+                 crs = 4326)
+
+#########
+load("~/Dropbox/r_developments/r_talks/2024/dengue_stratification/talks/persistent_transmission/dashboard_escenarios_epidemiologicos.RData")
+
+mex |>
+    sf::st_drop_geometry() |>
+    gt::gt()
+

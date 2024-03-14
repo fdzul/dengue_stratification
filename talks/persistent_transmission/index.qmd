@@ -758,7 +758,7 @@ denhotspots::map_risk(risk = risk,
 :::
 
 :::{.column style="width: 33.3%;font-size: 90%"}
-|Estado	Pendiente|
+|Estados Pendientes|
 |---	|
 | 01 Aguascalientes |
 | 02 Baja California |
