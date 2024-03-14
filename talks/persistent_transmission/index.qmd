@@ -1,0 +1,778 @@
+---
+format: 
+  revealjs:
+    #theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    logo: "https://www.insp.mx/assets/images/insp.png"
+    footer: "[github.com/fdzul](https://github.com/fdzul)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1>Análisis Espacial del Dengue<br>en México</h1>
+
+<h2>
+
+</h2>
+
+<hr>
+
+<br>
+
+<h3>Alumno</h3>
+
+<h3>Dr. Felipe Dzul Manzanilla</h3>
+
+<br>
+
+<h3>Director</h3>
+
+<h3>Dr. Héctor Gómez-Dantés</h3>
+
+<br> <br>
+
+<h3>Create: 2024-02-05</h3>
+
+<h3>Updated: 2024-02-12</h3>
+
+<h3>Compiled: 2024-02-14</h3>
+
+<br>
+
+![](chains_ticul_2023.jpg){.absolute top="250" left="700" width="1000"}
+
+## [Flujograma del Análisis Espacial de la Transmisión del Dengue]{.r-fit-text style="color:#003300;"}
+
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+::: columns
+::: {.column style="width: 50%"}
+```{r, dpi = 300, echo=FALSE, out.width='100%', fig.align ="center"}
+DiagrammeR::grViz("digraph {
+                  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, 
+  style = filled, 
+  color = grey, 
+  nodesep = .5,
+  fixedsize = true, 
+  width = 2.5] 
+  
+  # edge definition
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  
+  ##### epidemiological data
+  
+  epi [label = 'Vigilancia Epidemiológica',  fillcolor =  '#DB4437', color = 'white', fontcolor = 'white']
+  data_historic [label = 'Transmision Persistente',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  data_datos_actuales [label = 'Transmisión Reciente',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  data_acumulados [label = 'Transmisión Reciente',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  data_trans_activa [label = 'Transmisión Activa',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  
+  
+  ##### Spatial Data
+  
+  areal [label = 'Areal Data',  fillcolor =  '#0F9D58', color = 'white', fontcolor = 'white']
+  pp_data [label = 'Point Pattern Data',  fillcolor =  ' #0F9D58', color = 'white', fontcolor = 'white']
+  
+  
+ 
+ # Análisis 
+ hotspots [label = 'Hotspots Analysis',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ cadenas [label = 'Cadenas de Transmisión',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ cluster_ana [label = 'Cluster Analysis',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ lgcp [label = 'Spatial LGCP',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ 
+ heatmap [label = 'Mapas de Calor',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ 
+ 
+ # software
+ 
+ geoda [label = 'Geoda',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white']
+ cluster_s [label = 'ClusterSeer',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white']
+ satscan [label = 'SatScan',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white']
+ 
+ r_rstudio [label = 'R & RStudio',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white']
+
+  denhotspot [label = 'denhotspots Package',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white'] 
+ 
+ ##### define the relation
+ 
+ epi -> {data_historic  data_datos_actuales}
+ data_historic -> areal -> hotspots -> geoda
+ data_datos_actuales -> {data_acumulados, data_trans_activa} -> pp_data -> {cadenas lgcp cluster_ana heatmap}
+ cadenas -> cluster_s
+ cluster_ana -> satscan
+ 
+ {geoda cluster_s satscan lgcp} -> r_rstudio -> denhotspot
+ 
+}", heigh = "800px",
+width = "800px")
+
+```
+:::
+
+::: {.column style="width: 50%"}
+```{r, echo=FALSE, out.width='100%', fig.align='center'}
+DiagrammeR::grViz("digraph {
+                  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, 
+  style = filled, 
+  color = grey, 
+  nodesep = .5,
+  fixedsize = true, 
+  width = 2.5] 
+  
+  # edge definition
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  
+  ##### entomological data
+  
+  ento [label = 'Vigilancia Entomológica',  fillcolor =  '#FF5A5F', color = 'white', fontcolor = 'white']
+  data_historic [label = 'Datos Históricos',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  
+  years  [label = '2014-2019',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  data_datos_actuales [label = 'Datos del Año Actual',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  data_acumulados [label = 'Datos hasta la Semana Actual',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  data_trans_activa [label = 'Semana Actual',  fillcolor =  'gray', color = 'white', fontcolor = 'white']
+  
+  
+  ##### Spatial Data
+  
+  geo_data [label = 'Geoestatistical Data',  fillcolor =  '#0F9D58', color = 'white', fontcolor = 'white']
+ 
+  
+ 
+ # Análisis 
+ spde [label = 'SPDE-INLA',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ hotspots [label = 'Hotspots Analysis',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ #prediction [label = 'Predicción Espacial de Huevos',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ 
+ # entomological study
+ ovitraps [label = 'Ovitrampas',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+  enc_ver [label = 'Encuesta-Verificación',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+  adults [label = 'Colecta de Adultos',  fillcolor =  'orange', color = 'white', fontcolor = 'black']
+ 
+ 
+ # software
+ r_rstudio [label = 'R & RStudio',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white']
+ deneggs [label = 'deneggs Package',  fillcolor =  'DodgerBlue', color = 'white', fontcolor = 'white'] 
+ 
+ 
+ 
+ 
+ ##### define the relation
+ 
+ 
+ ento -> {ovitraps  enc_ver adults} 
+ 
+ {ovitraps adults} -> geo_data -> {data_historic data_datos_actuales}
+ data_historic -> years
+ 
+ data_datos_actuales -> {data_acumulados data_trans_activa}
+ 
+ {years data_acumulados data_trans_activa} ->spde -> hotspots
+ 
+ {hotspots} -> r_rstudio -> deneggs
+ 
+}", heigh = "800px",
+width = "800px")
+
+```
+:::
+:::
+
+::: aside
+[Dzul-Manzanilla et al 2021](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(21)00030-9/fulltext)
+
+[Dzul-Manzanilla et al 2019](https://www.researchgate.net/publication/338595327_HOTSPOTS_DE_Aedes_aegypti_EN_EL_AREA_METROPOLITANA_DE_VERACRUZ_MEXICO)
+:::
+
+## [1.Hotspots de la Transmisión Persistente de las Arbovirosis en Localidades Prioritarias]{.r-fit-text style="color:#003300;"}
+
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+::: columns
+::: {.column style="width: 50%; font-size: 100%"}
+1.  Bajar las bases de datos del [SINAVE](https://www.sinave.gob.mx/).
+2.  Geocodificar las bases.
+3.  Bajar los shapefile del [INEGI](https://www.inegi.org.mx/).
+4.  Seleccionar la localidad de interes y extraer los AGEBs.
+5.  Contar el número de casos por AGEB.
+6.  Cálcular el Z-score de los casos.
+7.  Generar la matriz de adjacencias.
+8.  Cálcular el estadístico espacial local Getis&Ord $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$.
+9.  Realizar la la corrección de Bonferroni.
+10. Cálcular los hotspots.
+11. Visualizar los hotspots.
+:::
+
+::: {.column style="width: 50%"}
+```{r, dpi=300,echo=FALSE, fig.align ="center", out.width = "100%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  
+  # flowchart for hotspots
+  sinave [label = 'SINAVE',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  denv [label = 'Bases de DENV',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  geocode [label = 'Geocodificación',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  cases_ageb [label = 'Casos por AGEBs']
+  z_score [label = 'Z-score']
+  gi [label = 'Estadístico Espacial Local (Gi*)']
+  bonferroni [label = 'Corrección de Bonferroni']
+  hotspots [label = 'Hotspots', style = filled, color = orange]
+  
+  # flow chart for inegi
+  inegi [label = 'INEGI', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  loc [label = 'Localidades Shapefile', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  ageb [label = 'AGEB Shapefile', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  loc_esp [label = 'Localidad de Ínteres', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  ageb_esp [label = 'AGEBs de la Localidad de Ínteres', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  mat [label = 'Matriz de Adjacencias', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  
+  # edge definitions with the node IDs
+  edge [color = black]
+  sinave -> denv -> geocode -> cases_ageb -> z_score -> gi -> bonferroni -> hotspots 
+  inegi -> {ageb, loc}
+  loc -> loc_esp -> ageb_esp
+  ageb -> ageb_esp
+  ageb_esp -> mat
+  mat -> cases_ageb 
+ 
+  }", 
+  heigh = "1000px",
+width = "800px")
+
+```
+:::
+:::
+
+::: aside
+[Dzul-Manzanilla et al 2021](https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(21)00030-9/fulltext)
+:::
+
+
+## [2. Hotspots de Abundancia Persistente del Vector en Localidades Prioritarias]{style="color:#003300;" .r-fit-text}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+
+```{r, echo=FALSE,dpi=300,  fig.align ="center",out.height="100%", out.width = "90%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  #
+  cenaprece [label = 'CENAPRECE',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  ovitrap [label = 'Ovitrampas',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  coord [label = 'Coordenadas',  fillcolor = 'SeaGreen', color = 'white', fontcolor = 'white']
+  ovicoord [label = 'ovi + coord']
+  
+  # flow chart for inegi
+  inegi [label = 'INEGI', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+  loc [label = 'Localidades Shapefile', fillcolor = 'DeepSkyBlue', color = 'white', fontcolor = 'black']
+
+  ###
+  mesh [label = '1. Mesh']
+  spde [label = '2. SPDE']
+  
+  proj_train [label = '3a. Projector Matrix A. Test']
+  proj_test [label = '3b. Projector Matrix A. Train']
+  
+  spatial_field [label = '4. Spatial Field W']
+  
+  stack_train [label = '5a. Stack Train']
+  stack_test [label = '5b. Stack Test']
+  stack_pred [label = '5c. Stack Prediction']
+  stack_joint [label = '6. Joint Stack']
+  
+  formula [label = '7. Formula']
+  inla [label = '8. INLA',  fillcolor = 'Orange', color = 'white', fontcolor = 'white']
+  
+ 
+  
+  # edge definitions with the node IDs
+  cenaprece -> {ovitrap, coord} -> ovicoord
+  #
+  inegi -> loc -> ovicoord
+  #
+  ovicoord -> mesh
+  mesh -> spde -> spatial_field ->  stack_joint
+  spde -> {proj_train,  proj_test}
+  spatial_field -> {stack_test, stack_train, stack_pred} ->  stack_joint -> formula -> inla 
+  proj_train -> stack_train
+  proj_test -> stack_test
+
+  
+  }", 
+  height = 900)
+
+```
+
+:::
+
+::: {.column style="width: 50%"}
+
+```{r, echo=FALSE,dpi=300, fig.align ="center", out.height="100%", out.width = "90%"}
+DiagrammeR::grViz("digraph {
+
+  # graph definitions
+  graph [layout = dot, rankdir = TB]
+  
+  # node definitions
+  node [shape = rectangle, style = filled, color = grey] 
+  edge [color = grey, arrowhead = normal, arrowtail = dot]
+  
+  #
+  
+  inla [label = '8. INLA',  fillcolor = 'Orange', color = 'white', fontcolor = 'white']
+  stat [label = '9. Statistics']
+  
+  zeros [label = '9.1. % Zeros']
+  disp [label = '9.2. Dispersion Statistics']
+  dic [label = '9.3. Deviance Information Criterio']
+  pear [label = '9.4. Pearson Residuals']
+  
+  ##
+  p [label = 'Poisson']
+  zip [label = 'ZeroInflated Poisson']
+  nb [label = 'Negative Binomial']
+  zinb [label = 'ZeroInflated Poisson Negative Binomial']
+  
+  sel [label = '10.Select the Distribution & Model']
+  
+  # prediction ####
+  ext_pred [label = '11. Extract Index Prediction']
+  coor_pred [label = '12. Extract Coordinates Prediction']
+  pred [label = '13. Prediction']
+ 
+  hotspots [label = '14.Hotspots', fillcolor = 'Orange', color = 'white', fontcolor = 'white']
+  save [label = '15. Save results']
+  
+  mappred [label = '15a. Prediction Map']
+  hotspotsb [label = '15b. Hotspots']
+  dics [label = '15c. DICs']
+  loc [label = '15d. Locality']
+  data [label = '15e. Dataset']
+  
+  # edge definitions with the node IDs
+  inla -> stat
+  stat -> {zeros, disp, dic,pear} -> {p, zip, nb, zinb} -> sel
+  sel -> ext_pred -> coor_pred -> pred -> hotspots -> save
+  save -> {mappred, hotspotsb, dics, loc, data}
+
+  
+  }", 
+  height = 900)
+
+```
+:::
+
+::::
+
+::: aside
+[Modificado de Zuur et al 2017](http://www.highstat.com/index.php/beginner-s-guide-to-regression-models-with-spatial-and-temporal-correlation); [Dzul-Manzanilla et al 2019](https://www.researchgate.net/publication/338595327_HOTSPOTS_DE_Aedes_aegypti_EN_EL_AREA_METROPOLITANA_DE_VERACRUZ_MEXICO)
+:::
+
+
+## [Hotspots & Estadístico Espacial Local $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$ (Hotspots)]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+::: {.column style="width: 100%; font-size: 100%"}
+&nbsp;
+
+$$\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*} = \frac{\color{#FF4136}\sum_{\color{#FF4136}j \color{#FF4136}= \color{#FF4136}1}^\color{#FF4136}{n} \color{#FF4136}w_{\color{#FF4136}i\color{#FF4136}j}\color{#FF4136}x_{\color{#FF4136}j}}
+{\color{#0074D9}\sum_{\color{#0074D   
+9}j \color{#0074D9}= \color{#0074D9}1}^{\color{#0074D9}n} \color{#0074D9}x_{\color{#0074D9}j}}$$
+
+donde:
+&nbsp;
+ 
+$\color{#FF4136}\sum_{\color{#FF4136}j \color{#FF4136}= \color{#FF4136}1}^\color{#FF4136}{n} \color{#FF4136}w_{\color{#FF4136}i\color{#FF4136}j}\color{#FF4136}x_{\color{#FF4136}j}$ el numerador, es la suma de los valores $x_{i}$ de la unidad espacial de interes con sus vecinos $x_{j}$ &
+ 
+ &nbsp;
+ 
+ $\frac{}{\color{#0074D9}\sum_{\color{#0074D9}j \color{#0074D9}= \color{#0074D9}1}^{\color{#0074D9}n} \color{#0074D9}x_{\color{#0074D9}j}}$ el denominador, es la suma de todos los valores $x$ en toda la localidad de interes.
+ &nbsp;
+ 
+**Hotspots** 
+son las áreas o las unidades espaciales con valores altos de $\color{#2ECC40}G_{\color{#2ECC40}i}^{\color{#2ECC40}*}$ y homogéneos de la unidad espaciales de interes $x_{ij}$. En otras palabras el estadístico espacial, identifica las unidades espaciales $x_{ij}$ con valores altos comparados con el valor promedio de todas la unidades espaciales en la localidad de interes.
+
+::: aside
+[Getis & Ord 1992](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1992.tb00261.x); [Ord & Getis 1995](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1995.tb00912.x)
+:::
+
+:::
+
+
+# [Análisis Geoestadístico del Vector]{style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/spatial_analysis_dengue/guadalajara_sample.jpg?raw=true)
+:::
+
+::: {.column style="width: 50%; font-size: 100%"}
+$s{_i}$ sitios de colecta con coordenadas geográficas (longitud. latitud).
+&nbsp;
+
+$D$ area de estudio (zona metropolitana de Guadalajara).
+&nbsp;
+
+$Y{_i}$ es la variable de respuesta (Número de Huevos por Ovitrampa o Manzana).
+&nbsp;
+
+$y{_i}$ tiene una distribución (binomial negativa ó zibn).
+&nbsp;
+
+$U{_s{_i}}$ el efecto espacial & el proceso ocurre en un campo gaussiano continuo (Gaussian Field).
+
+Se usa SPDE & Elemento Finito para aproximar la matriz de covarianzas de $U{_s{_i}}$
+
+$\color{#2ECC40}{el \space proceso \space se \space encuentra \space implementado \space en \space INLA}$
+:::
+
+::::
+
+## [**Modelos Geoestadísticos del Vector del Dengue**]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+| Ecuación  	|   Efecto	|   
+|---	|---	|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#ECB22E}{u_i} +\color{#6200B4}{e_i}$|Espacial sin covariables|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#6200B4}{e_i}$|  Espacial + Variables Climáticas|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#6200B4}{e_i}$|  Espacial + combinación Líneal de las Variables Climáticas|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#ECB22E}{u_i} + \color{#ECB22E}{\alpha_i} +\color{#6200B4}{e_i}$|Efecto Espacial + Effecto Aleatorio sin covariables|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#ECB22E}{\alpha_i} +\color{#6200B4}{e_i}$ |Efecto Espacial + Effecto Aleatorio + Variables Climáticas|
+|$\color{#2EB67D}{y_i} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{u_i} + \color{#ECB22E}{\alpha_i} +\color{#6200B4}{e_i}$|Efecto Espacial + Effecto Aleatorio + Combinación lineal de Variables Climáticas|
+|$\color{#2EB67D}{y_{st}} = \color{#36C5F0}{\beta_0} + \color{#ECB22E}{v_{st}} + \color{#6200B4}{e_{st}}$| Efecto Espacio-Temporal|
+|$\color{#2EB67D}{y_{st}} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{v_{st}} + \color{#6200B4}{e_{st}}$|Efecto Espacio-Temporal + Variables Climáticas|
+|$\color{#2EB67D}{y_{st}} = \color{#36C5F0}{\beta_0} + \color{#E01E5A}{\beta_x} + \color{#ECB22E}{v_{st}} + \color{#6200B4}{e_{st}}$ |Efecto Espacio-Temporal + Combinación lineal de Variables Climáticas|
+
+
+## [Desarrollo Conceptual del **Modelo Estratégico de Focalización del Dengue**]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+
+:::: {.columns}
+
+::: {.column style="width: 50%"}
+Concepto
+
+![](https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/mia/transmision_persistente.jpg?raw=true){.absolute right="800" height="815"}
+:::
+
+:::{.column style="width: 50%"}
+Mapa de riesgo
+<img src = "https://github.com/fdzul/spatial_analysis_dengue_R_2024_talks/blob/main/talks/spatial_analysis_dengue/fig/map_risk_guadalajara.jpg?raw=true">
+:::
+
+::::
+
+
+## [Definición de los Escenarios Operativos ó Epidemiológicos]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 40%;font-size: 100%"}
+&nbsp;
+
+<span style="color:#F44B1FFF;">Riesgo Muy Alto de Transmisión.</span> Hotposts de casos + hotspots del vector.
+
+&nbsp;
+
+<span style="color:#FF9000FF;">Riesgo Alto de Transmisión.</span> Hotspots de transmisión.
+
+&nbsp;
+
+<span style="color:gold;">Riesgo Medio de Transmisión.</span>Hotspots del vector.
+
+&nbsp;
+
+<span style="color:#00F293FF;">Riesgo Bajo de Transmisión.</span>Sin hotspots de transmisión o hotspots del vector.
+
+:::
+
+::: {.column style="width: 60%"}
+```{r risk_merida2}
+#| fig-width: 10
+#| fig-height: 10
+#| echo: false
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_31_yucatan,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = "Mérida",
+                               cve_edo = "31")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+::::
+
+
+## [Transmisión Persistente & Abundancia Persistente en Guadalajara & Mérida]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+<html>
+<head>
+```{=html}
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 5px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+}
+</style>
+```
+</head>
+<body>
+<h1>
+</h1>
+<p>
+</p>
+
+::: grid-container
+
+::: grid-item
+Localidad
+:::
+
+::: grid-item
+Transmisión
+:::
+
+::: grid-item
+Vector
+:::
+
+::: grid-item
+Escenarios
+:::
+
+::: grid-item
+Mérida
+:::
+
+::: grid-item
+```{r hotspots_cases_merida, out.height="110%", out.width="110%", echo=FALSE}
+# Step 1. extract the locality ####
+loc <- rgeomex::extract_locality(cve_edo = "31", 
+                                 locality = "Merida")
+
+# Step 2. Extract the hotspots ####
+hotspots <- denmex::den_hotspots[loc, ]
+
+# Step 3. Vizualization of hotspots ####
+
+hotspots |>
+    denhotspots::staticmap_intensity(pal = rcartocolor::carto_pal,
+                                 pal_name = TRUE,
+                                 name = "OrYel",
+                                 breaks = 1,
+                                 dir_pal = -1,
+                                 x_leg = 0.5,
+                                 y_leg = 0.1,
+                                 ageb = TRUE)
+```
+:::
+
+::: grid-item
+```{r hotspots_vector_merida, out.height="110%", out.width="110%", echo=FALSE}
+source("/Users/fdzul/Dropbox/r_developments/r_talks/2023/reunion_interstatal_2023/reunion_quintana_roo/functions/intensity_eggs.R")
+
+denmex::eggs_betas_31_yucatan |>
+    dplyr::filter(year == 2019) |>
+    intensity_eggs(locality = "Mérida",
+                    cve_ent = "31",
+                    palette = rcartocolor::carto_pal,
+                    name = "SunsetDark")
+
+
+
+```
+:::
+
+::: grid-item
+```{r risk_merida, out.height="110%", out.width="110%", echo=FALSE}
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_31_yucatan,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = "Mérida",
+                               cve_edo = "31")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+::: grid-item
+Guadalajara
+:::
+
+::: grid-item
+```{r hotspots_cases_guadalajara, out.height="110%", out.width="110%", echo=FALSE}
+# Step 1. extract the locality ####
+loc <- rgeomex::extract_locality(cve_edo = "14", 
+                                 locality = c("Guadalajara",
+                                              "Tlaquepaque",
+                                              "Tonalá",
+                                              "Zapopan"))
+
+# Step 2. Extract the hotspots ####
+hotspots <- denmex::den_hotspots[loc, ]
+
+# Step 3. Vizualization of hotspots ####
+
+hotspots |>
+    denhotspots::staticmap_intensity(pal = rcartocolor::carto_pal,
+                                 pal_name = TRUE,
+                                 name = "OrYel",
+                                 breaks = 1,
+                                 dir_pal = -1,
+                                 x_leg = 0.5,
+                                 y_leg = 0.1,
+                                 ageb = TRUE)
+```
+:::
+
+::: grid-item
+```{r hotspots_vector_guadalajara, out.height="110%", out.width="110%", echo=FALSE}
+source("/Users/fdzul/Dropbox/r_developments/r_talks/2023/reunion_interstatal_2023/reunion_quintana_roo/functions/intensity_eggs.R")
+
+denmex::eggs_betas_14_jalisco |>
+    dplyr::filter(year == 2019) |>
+    intensity_eggs(locality = c("Guadalajara",
+                                "Tlaquepaque",
+                                "Tonalá",
+                                "Zapopan"),
+                    cve_ent = "14",
+                    palette = rcartocolor::carto_pal,
+                    name = "SunsetDark")
+
+
+
+```
+:::
+
+::: grid-item
+```{r risk_guadalajara, out.height="110%", out.width="110%", echo=FALSE}
+# Step 1. calculate the risk ####
+risk <- denhotspots::risk_ageb(betas = denmex::eggs_betas_14_jalisco,
+                               hotspots = denmex::den_hotspots,
+                               intensity_perc = 25,
+                               locality = c("Guadalajara",
+                                              "Tlaquepaque",
+                                              "Tonalá",
+                                              "Zapopan"),
+                               cve_edo = "14")
+
+# Step 2. map ####
+denhotspots::map_risk(risk = risk,
+                      staticmap = TRUE)
+```
+:::
+
+:::
+
+</body>
+</html>
+
+
+## [Transmisión Persistente & Abundancia Persistente: Avances]{.r-fit-text style="color:#003300;"}
+<hr style="height:2px;border-width:0;color:#330019;background-color:#330019">
+
+:::: {.columns}
+
+::: {.column style="width: 33.3%; font-size: 90%"}
+|Estados Trabajados|
+|---	|
+| [04 Campeche](https://phenomenal-hotteok-02e188.netlify.app/) | 
+| [07 Chiapas](https://phenomenal-hotteok-02e188.netlify.app/) |
+| [12 Guerrero](https://astounding-squirrel-94dd18.netlify.app/) |
+| [14 jalisco](https://heartfelt-fudge-936865.netlify.app/) |
+| [16 Michoacan](https://fabulous-mermaid-31ea6a.netlify.app/) |
+| [17 Morelos](https://glistening-griffin-b8023f.netlify.app/) |
+| [20 Oaxaca](https://merry-figolla-08f5bf.netlify.app/)|
+| [23 Quintana Roo](https://helpful-pegasus-ba8bb9.netlify.app/)|
+| [24 San Luis Potosi](https://wonderful-belekoy-db9c08.netlify.app/)|
+| [23 Tabasco](https://capable-torrone-6eae7f.netlify.app/)|
+| [30 Veraruz](https://zippy-bunny-bdd8c7.netlify.app/)|
+| [31 Yucatan](https://keen-dango-d1cd7e.netlify.app/)|
+:::
+
+
+:::{.column style="width: 33.3%;font-size: 90%"}
+|Estados a Trabajar|
+|---	|
+| 06 Colima|
+| 09 Ciudad de México|
+| 11 Guanajuato|
+| 18 Nayarit|
+| 19 Nuevo León|
+| 21 Puebla|
+| 25 Sinaloa|
+| 26 Sonora|
+| 28 Tamaulipas|
+:::
+
+:::{.column style="width: 33.3%;font-size: 90%"}
+|Estado	Pendiente|
+|---	|
+| 01 Aguascalientes |
+| 02 Baja California |
+| 03 Baja California Sur|
+| 05 Coahuila|
+| 08 Chihuahua|
+| 10 Durango|
+| 13 Hidalgo|
+| 15 Estado de México|
+| 22 Queretaro|
+| 29 Tlaxcala|
+| 32 Zacatecas|
+:::
+
+::::
+
+

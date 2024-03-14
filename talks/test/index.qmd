@@ -1,0 +1,61 @@
+---
+title: "text"
+format: revealjs
+editor: visual
+---
+
+## Quarto
+
+:::: {.columns}
+
+::: {.column style="width: 33.3%; font-size: 70%"}
+|Estados Trabajados|
+|---	|
+| [04 Campeche](https://phenomenal-hotteok-02e188.netlify.app/) | 
+| [07 Chiapas](https://phenomenal-hotteok-02e188.netlify.app/) |
+| [12 Guerrero](https://astounding-squirrel-94dd18.netlify.app/) |
+| [14 jalisco](https://heartfelt-fudge-936865.netlify.app/) |
+| [16 Michoacan](https://fabulous-mermaid-31ea6a.netlify.app/) |
+| [17 Morelos](https://glistening-griffin-b8023f.netlify.app/) |
+| [20 Oaxaca](https://merry-figolla-08f5bf.netlify.app/)|
+| [23 Quintana Roo](https://helpful-pegasus-ba8bb9.netlify.app/)|
+| [24 San Luis Potosi](https://wonderful-belekoy-db9c08.netlify.app/)|
+| [23 Tabasco](https://capable-torrone-6eae7f.netlify.app/)|
+| [30 Veraruz](https://zippy-bunny-bdd8c7.netlify.app/)|
+| [31 Yucatan](https://keen-dango-d1cd7e.netlify.app/)|
+:::
+
+
+:::{.column style="width: 33.3%;font-size: 70%"}
+|Estados a Trabajar|
+|---	|
+| 06 Colima|
+| 09 Ciudad de México|
+| 11 Guanajuato|
+| 18 Nayarit|
+| 19 Nuevo León|
+| 21 Puebla|
+| 25 Sinaloa|
+| 26 Sonora|
+| 28 Tamaulipas|
+:::
+
+:::{.column style="width: 33.3%;font-size: 70%"}
+|Estado	Pendiente|
+|---	|
+| 01 Aguascalientes |
+| 02 Baja California |
+| 03 Baja California Sur|
+| 05 Coahuila|
+| 08 Chihuahua|
+| 10 Durango|
+| 13 Hidalgo|
+| 15 Estado de México|
+| 22 Queretaro|
+| 29 Tlaxcala|
+| 32 Zacatecas|
+:::
+
+::::
+
+
